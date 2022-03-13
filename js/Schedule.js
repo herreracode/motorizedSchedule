@@ -228,4 +228,36 @@ var Schedule = {
         Schedule.removeMotorizedToSchedule(schedule);
         toastr.warning('Se deselecciono horario');
     },
+
+    initRenderScheduling: function ()  {
+        
+        let bodyTable = document.getElementById('tableScheduleBody');
+
+        let date = new Date();
+
+        date.setHours(8);
+
+        date.setMinutes(00);
+
+        [...Array(25).keys()].forEach(() => {
+
+            let column = document.createElement("tr");
+
+            let row = this.getRowSchedule(date.getHours(), date.getMinutes());
+
+            column.innerHTML = row;
+
+            bodyTable.append(column);
+
+            date = new Date(date.getTime() + 30 * 60000);
+        });
+
+    },
+
+    getRowSchedule: function (hour,minutes){
+
+        return `<th scope="row">${hour}:${minutes}</th><td>` +
+        `<div><button data-hour="${hour}${minutes}" onclick="Schedule.selectSchedule({ trigger : this})">Seleccionar` +
+        '</button></div></td>';
+    }
 };
