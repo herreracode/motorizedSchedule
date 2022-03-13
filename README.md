@@ -7,3 +7,11 @@ and each schedule has a quota of 8 motorized vehicles.
 - When a user chooses a schedule, it must be green.
 - When a user has selected a schedule, and clicks on it, it must be deselected.
 - When the schedule already has 8 motorized vehicles assigned it must be shown in red.
+
+
+#install with docker 
+
+
+- docker build -t motorized-scheduling .
+
+- docker run -dit --name motorized-scheduling-app -p 8080:80 motorized-scheduling
